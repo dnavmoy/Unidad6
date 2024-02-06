@@ -48,16 +48,17 @@ public class Ej0206 {
         
     }
     
-    public static int sumarArray(int[] lista,int total){
-        int posicion =0;
-        if(posicion<0||posicion>lista.length){
+    public static int sumarArray(int[] lista,int posicion){
+        
+        if(posicion<0||posicion==lista.length){
             System.out.println("fuera de lista");
             
         } else{
-            total+=lista[posicion];
+           
+           return lista[posicion++]+sumarArray(lista, posicion);
             
         }
-        return total;
+        return 0;
     }
     
     
