@@ -23,4 +23,13 @@ public class paraProbar {
         }
         return total;
     }
+    
+    
+    public static int factorialRecursivo(int numero){
+        
+        
+        return numero;
+    }
+    
+    
 }
