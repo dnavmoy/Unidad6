@@ -18,9 +18,9 @@ public class Ej0206 {
         for(int i =65; i<91;i++){
             listaChar.add((char)i);
         }
-        
-        int[] listaInt=new int[50];
-        for(int i =0; i<50;i++){
+        int cantidad=50;
+        int[] listaInt=new int[cantidad+1];
+        for(int i =0; i<cantidad+1;i++){
             listaInt[i]=i;
         }
         
