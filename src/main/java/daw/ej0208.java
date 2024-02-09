@@ -19,7 +19,7 @@ public class ej0208 {
     public static void main(String[] args) {
 
         String palabra = JOptionPane.showInputDialog("introduce palabra");
-        //JOptionPane.showMessageDialog(null, palabra + " es palindromo: " + palindromoReiterativo(palabra));
+        JOptionPane.showMessageDialog(null, palabra + " es palindromo: " + palindromoReiterativo(palabra));
         palindromoRecursivo(palabra, 0);
 
     }
