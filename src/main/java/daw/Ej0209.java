@@ -30,10 +30,11 @@ public class Ej0209 {
         Map<Integer,Integer> repetidos=metodoA(listaNumeros);
         repetidos.forEach((k,v)->System.out.println("numero " + k + " repetido "+ v+ " veces"));
         ArrayList<Integer> sinRepetidos = metodoB(listaNumeros);
+        //ArrayList<Integer> sinRepetidos = metodoBv2(listaNumeros);
         System.out.println("lista metodos b");
         sinRepetidos.forEach((k)->System.out.println(k));
         System.out.println("metodo c");
-        System.out.println(metodosC(sinRepetidos,11, 0));
+        System.out.println(metodosC(sinRepetidos,5, 0));
         
     }
     
@@ -53,7 +54,39 @@ public class Ej0209 {
         return repetidos;
     }
     
-    public static ArrayList metodoB(int[] lista){
+    
+    
+    public static int metodosC(ArrayList<Integer> lista,int numero,int posicion){
+        
+        
+        if(lista.get(posicion)==numero){            
+            return posicion;
+        }    else if (posicion==lista.size()-1){
+            return -1;
+        }else{
+            return metodosC(lista,numero,++posicion);
+        }                                    
+    }
+    
+     public static ArrayList metodoB(int[] lista){
+         
+         ArrayList<Integer> repetidos=new ArrayList<>();
+         for(int i=0; i<lista.length;i++){
+             for(int j=0;j<lista.length;j++){
+                 if(lista[i]==lista[j]){
+                     if(!repetidos.contains(lista[i])){
+                         repetidos.add(lista[i]);
+                     }
+                 }
+             }
+             
+         }
+         
+         
+         return repetidos;
+     }
+     
+     public static ArrayList metodoBv2(int[] lista){
         
         Set<Integer> repetidos = new HashSet<>();
         
@@ -72,20 +105,5 @@ public class Ej0209 {
         return array;
     }
     
-    public static int metodosC(ArrayList<Integer> lista,int numero,int posicion){
-        
-        
-        if(lista.get(posicion)==numero){            
-            return posicion;
-        }    else if (posicion==lista.size()-1){
-            return -1;
-        }else{
-            return metodosC(lista,numero,++posicion);
-        }
-        
-        
-            
-        
-    }
     
 }
