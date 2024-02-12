@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author daniel
  */
-public class Vehiculo {
+public abstract class  Vehiculo {
 
     private String matricula;
     private String bastidor;
@@ -77,7 +77,7 @@ public class Vehiculo {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+            if (getClass() != obj.getClass()) {
             return false;
         }
         final Vehiculo other = (Vehiculo) obj;
@@ -109,4 +109,9 @@ public class Vehiculo {
         this.tarifa-=cantidad;
     }
 
+    public void pasarItv(){
+        System.out.println("soy un vehiculo y estoy pasando la itv");
+    }
+    
+    
 }

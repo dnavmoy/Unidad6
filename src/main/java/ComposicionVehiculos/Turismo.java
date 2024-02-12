@@ -64,8 +64,15 @@ public class Turismo extends Vehiculo {
         return "\nTurismo{" + "numeroPuertas=" + numeroPuertas +" " + super.getMarca() + " }";
     }
     
+  
+    
     public void añadirRuedaRepuesto(){
         System.out.println("añadiendo rueda");
     }
     
+    
+    @Override
+      public void pasarItv(){
+          System.out.println("soy un turismo y estoy pasando la itv");
+    }
 }
