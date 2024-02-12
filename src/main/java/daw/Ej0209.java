@@ -29,11 +29,11 @@ public class Ej0209 {
                 
         Map<Integer,Integer> repetidos=metodoA(listaNumeros);
         repetidos.forEach((k,v)->System.out.println("numero " + k + " repetido "+ v+ " veces"));
-        Set<Integer> sinRepetidos = metodoB(listaNumeros);
+        ArrayList<Integer> sinRepetidos = metodoB(listaNumeros);
         System.out.println("lista metodos b");
         sinRepetidos.forEach((k)->System.out.println(k));
         System.out.println("metodo c");
-        System.out.println(metodosC(sinRepetidos, 5, 0));
+        System.out.println(metodosC(sinRepetidos,11, 0));
         
     }
     
@@ -65,16 +65,20 @@ public class Ej0209 {
             }
             
         }   
-        ArrayList<int> array=repetidos.toArray();
+        ArrayList<Integer> array= new ArrayList<>();
+        repetidos.forEach((k)->array.add(k));
         
-        return repetidos;
+        
+        return array;
     }
     
-    public static int metodosC(Set lista,int numero,int posicion){
+    public static int metodosC(ArrayList<Integer> lista,int numero,int posicion){
         
         
-        if(lista.contains(numero)){            
+        if(lista.get(posicion)==numero){            
             return posicion;
+        }    else if (posicion==lista.size()-1){
+            return -1;
         }else{
             return metodosC(lista,numero,++posicion);
         }
