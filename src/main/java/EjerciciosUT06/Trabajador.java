@@ -21,9 +21,7 @@ public abstract class Trabajador {
         this.NIF = NIF;
     }
     
-    public void cotizar(){
-        System.out.println("Cotizando como Trabajador");
-    }
+    public abstract void cotizar();
 
     public String getNombre() {
         return nombre;
