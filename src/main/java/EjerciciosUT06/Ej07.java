@@ -23,6 +23,8 @@ public class Ej07 {
       Camarero fran = new Camarero("empleado", "Francisco", "Fernandez", "333f");
       Maitre luisa = new Maitre(1, "Maitre", "Luisa", "Perez", "222j");
       Maitre Eustaquia = new Maitre(5, "La jefa", "Eustaquia", "DelAmorHermoso", "444o");
+      Enfermera Ruperta = new Enfermera("costa del sol", "Ruperta", "Rigoberta", "444z");
+        Policia Juana   = new Policia("ee33", "juana", "suarez", "777");
         // Objeto superclase accediendo a sus métodos
         // Puede acceder a getters, setters, constructores y cotizar
 
@@ -31,6 +33,8 @@ public class Ej07 {
       lista.add(fran);
       lista.add(luisa);
       lista.add(Eustaquia);
+      lista.add(Ruperta);
+      lista.add(Juana);
       for(Trabajador p: lista){
         p.cotizar();
       }
@@ -43,7 +47,7 @@ public class Ej07 {
         
         // Objeto subclase accediendo a métodos de su clase
         // Puede ver getters, setters y contructores propios
-        
+        System.out.println("----- teoria----");
         System.out.println(juan.getRango());  
         juan.servirMesa();
         
