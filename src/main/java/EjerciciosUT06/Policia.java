@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author daniel
  */
-public class Policia extends Trabajador{
+public class Policia extends Trabajador implements CursoReciclado{
     
     private String numeroPlaca;
 
@@ -18,6 +18,7 @@ public class Policia extends Trabajador{
         super(nombre, apellido1, NIF);
         this.numeroPlaca = numeroPlaca;
     }
+    
 
     public String getNumeroPlaca() {
         return numeroPlaca;
@@ -66,6 +67,13 @@ public class Policia extends Trabajador{
     
     public void ponerDenuncia(){
         System.out.println("El policia esta poniendo una denuncia");
+    }
+
+    @Override
+    public void hacerCurso(int numeroHoras) {
+        if(numeroHoras>200){
+            System.out.println("subir sueldo del policia");
+        }
     }
     
 

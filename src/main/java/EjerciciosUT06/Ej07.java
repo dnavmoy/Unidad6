@@ -5,7 +5,9 @@
 package EjerciciosUT06;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -39,7 +41,17 @@ public class Ej07 {
         p.cotizar();
       }
         
-        
+      Set<CursoReciclado> hacenCursos= new HashSet();
+      hacenCursos.add(Juana);
+      
+      for(CursoReciclado hacenCurso: hacenCursos){
+          hacenCurso.hacerCurso(300);
+          if(hacenCurso instanceof Policia){
+              ((Policia) hacenCurso).ponerDenuncia();
+          }
+      }
+      
+      
         
         // No puede ver métodos del objeto subclase
         
