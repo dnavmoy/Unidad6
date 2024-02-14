@@ -45,6 +45,58 @@ public class CuentaAhorro extends Cuenta{
         this.setSaldo(this.getSaldo()+cantidad);
         System.out.println(cantidad+"€ ingresados, saldo nuevo: " + this.getSaldo());
     }
+
+    public double getInteres() {
+        return interes;
+    }
+
+    public void setInteres(double interes) {
+        this.interes = interes;
+    }
+
+    public double getComisionAnual() {
+        return comisionAnual;
+    }
+
+    public void setComisionAnual(double comisionAnual) {
+        this.comisionAnual = comisionAnual;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.interes) ^ (Double.doubleToLongBits(this.interes) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.comisionAnual) ^ (Double.doubleToLongBits(this.comisionAnual) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CuentaAhorro other = (CuentaAhorro) obj;
+        if (Double.doubleToLongBits(this.interes) != Double.doubleToLongBits(other.interes)) {
+            return false;
+        }
+        return Double.doubleToLongBits(this.comisionAnual) == Double.doubleToLongBits(other.comisionAnual);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CuentaAhorro{");
+        sb.append("interes=").append(interes);
+        sb.append(", comisionAnual=").append(comisionAnual);
+        sb.append('}');
+        return sb.toString();
+    }
  
     
     
