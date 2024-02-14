@@ -10,7 +10,7 @@ package Ej12;
  */
 public class CuentaCorriente extends Cuenta{
     
-    private double interes;
+    private final double INTERES=0.015;
     private double saldoMin;
 
     public CuentaCorriente(String numeroCuenta, double saldo, Persona cliente) {
@@ -18,9 +18,8 @@ public class CuentaCorriente extends Cuenta{
         
     }
     
-    public CuentaCorriente(Persona cliente){
-        super(cliente);
-        this.interes=0.0;
+    public CuentaCorriente(Persona cliente,String numeroCuenta ){
+        super(cliente,numeroCuenta);
         this.saldoMin=0;
         
     }
@@ -28,7 +27,7 @@ public class CuentaCorriente extends Cuenta{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.interes) ^ (Double.doubleToLongBits(this.interes) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.INTERES) ^ (Double.doubleToLongBits(this.INTERES) >>> 32));
         hash = 47 * hash + (int) (Double.doubleToLongBits(this.saldoMin) ^ (Double.doubleToLongBits(this.saldoMin) >>> 32));
         return hash;
     }
@@ -45,7 +44,7 @@ public class CuentaCorriente extends Cuenta{
             return false;
         }
         final CuentaCorriente other = (CuentaCorriente) obj;
-        if (Double.doubleToLongBits(this.interes) != Double.doubleToLongBits(other.interes)) {
+        if (Double.doubleToLongBits(this.INTERES) != Double.doubleToLongBits(other.INTERES)) {
             return false;
         }
         return Double.doubleToLongBits(this.saldoMin) == Double.doubleToLongBits(other.saldoMin);
@@ -55,12 +54,14 @@ public class CuentaCorriente extends Cuenta{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("CuentaCorriente{");
-        sb.append("interes=").append(interes);
+        sb.append("INTERES=").append(INTERES);
         sb.append(", saldoMin=").append(saldoMin);
-        sb.append("numero cuenta" ).append(this.getNumeroCuenta());
+        sb.append(", saldo=").append(getSaldo());
         sb.append('}');
         return sb.toString();
     }
+
+
     
     
     
@@ -69,22 +70,35 @@ public class CuentaCorriente extends Cuenta{
     
     @Override
     public void actualizarSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    if(this.getSaldo()<1000){
+         this.setSaldo(this.getSaldo()+this.getSaldo()*INTERES);
+    }else{
+        this.setSaldo(this.getSaldo()+saldoMin*INTERES);
+    }
     }
 
     @Override
-    public double retirar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void retirar(double cantidad) {
+        if((this.getSaldo()-cantidad)<saldoMin){
+            System.out.println("saldo inferior al minimo, no se puede retirar");
+        }else{
+        this.setSaldo(this.getSaldo()-cantidad);
+            System.out.println(cantidad+"€ retirados, saldo nuevo: " + this.getSaldo());
+        }
+    }
+    
+    
+     @Override
+    public void ingresar(double cantidad) {
+        this.setSaldo(this.getSaldo()+cantidad);
+        System.out.println(cantidad+"€ ingresados, saldo nuevo: " + this.getSaldo());
     }
 
     public double getInteres() {
-        return interes;
+        return INTERES;
     }
 
-    public void setInteres(double interes) {
-        this.interes = interes;
-    }
-
+  
     public double getSaldoMin() {
         return saldoMin;
     }

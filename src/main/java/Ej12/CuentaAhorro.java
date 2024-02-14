@@ -19,20 +19,31 @@ public class CuentaAhorro extends Cuenta{
         this.comisionAnual = comisionAnual;
     }
 
-    public CuentaAhorro(double interes, double comisionAnual, Persona cliente) {
-        super(cliente);
+    public CuentaAhorro(double interes, double comisionAnual, Persona cliente,String numeroCuenta) {
+        super(cliente,numeroCuenta);
         this.interes = interes;
         this.comisionAnual = comisionAnual;
     }
 
     @Override
     public void actualizarSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.setSaldo(this.getSaldo()+(this.getSaldo()*interes)-comisionAnual);
     }
 
     @Override
-    public double retirar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void retirar(double cantidad) {
+        if((this.getSaldo()-cantidad)<0){
+            System.out.println("saldo inferior al minimo, no se puede retirar");
+        }else{
+        this.setSaldo(this.getSaldo()-cantidad);
+            System.out.println(cantidad+"€ retirados, saldo nuevo: " + this.getSaldo());
+        }
+    }
+
+    @Override
+    public void ingresar(double cantidad) {
+        this.setSaldo(this.getSaldo()+cantidad);
+        System.out.println(cantidad+"€ ingresados, saldo nuevo: " + this.getSaldo());
     }
  
     

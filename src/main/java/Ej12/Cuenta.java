@@ -25,23 +25,14 @@ public abstract class Cuenta {
         this.cliente = cliente;
     }
 
-    public Cuenta(Persona cliente) {
+    public Cuenta(Persona cliente,String numeroCuenta) {
 
-        this.numeroCuenta = obtenerNumeroCuenta();
+        this.numeroCuenta = numeroCuenta;
         this.saldo = 0;
         this.cliente = cliente;
     }
 
-    private String obtenerNumeroCuenta() {
-        Random r = new Random();
-        String numeroTexto = "";
-        
-        for (int i = 0; i <= 20; i++) {
-           numeroTexto = numeroTexto.concat(String.valueOf((char) r.nextInt(48, 58)));
-                   }
-        
-        return numeroTexto;
-    }
+
 
     public String getNumeroCuenta() {
         return numeroCuenta;
@@ -110,6 +101,8 @@ public abstract class Cuenta {
 
     public abstract void actualizarSaldo();
 
-    public abstract double retirar();
+    public abstract void retirar(double cantidad);
+    
+    public abstract void ingresar(double cantidad);
 
 }
