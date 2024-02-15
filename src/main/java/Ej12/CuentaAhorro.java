@@ -13,14 +13,14 @@ public class CuentaAhorro extends Cuenta{
     private double interes;
     private double comisionAnual;
 
-    public CuentaAhorro(double interes, double comisionAnual, String numeroCuenta, double saldo, Persona cliente) {
-        super(numeroCuenta, saldo, cliente);
+    public CuentaAhorro(double interes, double comisionAnual,double saldo, Persona cliente) {
+        super(saldo, cliente);
         this.interes = interes;
         this.comisionAnual = comisionAnual;
     }
 
-    public CuentaAhorro(double interes, double comisionAnual, Persona cliente,String numeroCuenta) {
-        super(cliente,numeroCuenta);
+    public CuentaAhorro(double interes, double comisionAnual, Persona cliente) {
+        super(cliente);
         this.interes = interes;
         this.comisionAnual = comisionAnual;
     }
@@ -38,6 +38,10 @@ public class CuentaAhorro extends Cuenta{
         this.setSaldo(this.getSaldo()-cantidad);
             System.out.println(cantidad+"€ retirados, saldo nuevo: " + this.getSaldo());
         }
+    }
+    
+    public void quitarComision(){
+        this.comisionAnual=0;
     }
 
     @Override

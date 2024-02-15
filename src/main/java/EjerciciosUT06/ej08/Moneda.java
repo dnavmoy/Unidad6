@@ -12,10 +12,17 @@ import java.util.Random;
  */
 public class Moneda extends Azar{
 
+    public Moneda(int posibilidades) {
+        super(posibilidades);
+    }
+
+
+
+    
     @Override
     public int lanzar() {
         Random r = new Random();
-        return r.nextInt(1,3);
+        return r.nextInt(1,posibilidades+1);
     }
  
     

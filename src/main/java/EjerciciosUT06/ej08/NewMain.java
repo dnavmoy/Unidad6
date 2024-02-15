@@ -15,8 +15,8 @@ public class NewMain {
      */
     public static void main(String[] args) {
         
-        Moneda euro = new Moneda();
-        Dado blanco = new Dado();
+        Moneda euro = new Moneda(2);
+        Dado blanco = new Dado(6);
         System.out.println(euro.lanzar());
         System.out.println(blanco.lanzar());
         

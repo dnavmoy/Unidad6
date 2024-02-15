@@ -13,13 +13,13 @@ public class CuentaCorriente extends Cuenta{
     private final double INTERES=0.015;
     private double saldoMin;
 
-    public CuentaCorriente(String numeroCuenta, double saldo, Persona cliente) {
-        super(numeroCuenta, saldo, cliente);
+    public CuentaCorriente(double saldo, Persona cliente) {
+        super(saldo, cliente);
         
     }
     
-    public CuentaCorriente(Persona cliente,String numeroCuenta ){
-        super(cliente,numeroCuenta);
+    public CuentaCorriente(Persona cliente){
+        super(cliente);
         this.saldoMin=0;
         
     }
@@ -82,6 +82,7 @@ public class CuentaCorriente extends Cuenta{
         if((this.getSaldo()-cantidad)<saldoMin){
             System.out.println("saldo inferior al minimo, no se puede retirar");
         }else{
+            //this.saldo+=this.saldo-cantidad;
         this.setSaldo(this.getSaldo()-cantidad);
             System.out.println(cantidad+"€ retirados, saldo nuevo: " + this.getSaldo());
         }

@@ -4,9 +4,10 @@
  */
 package Ej12;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.ArrayList;
+
+
+
 
 /**
  *
@@ -19,23 +20,45 @@ public class Mainej12 {
      */
     public static void main(String[] args) {
         
-        HashSet listadoCuentas = new HashSet();
+       
         
         Persona pepe = new Persona("pepe", "garcia", "123");
-        String prueba = obtenerNumeroCuenta(listadoCuentas);
-        CuentaCorriente primera=new CuentaCorriente(pepe, obtenerNumeroCuenta(listadoCuentas));
-        CuentaCorriente segunda=new CuentaCorriente(pepe,obtenerNumeroCuenta(listadoCuentas));
-        CuentaCorriente tercera=new CuentaCorriente(pepe,obtenerNumeroCuenta(listadoCuentas));
         
-        CuentaAhorro ahorroPrimera= new CuentaAhorro(0.02, 0.001, pepe, obtenerNumeroCuenta(listadoCuentas));
-        CuentaAhorro ahorroSegunda= new CuentaAhorro(0.02, 0.001, pepe, obtenerNumeroCuenta(listadoCuentas));      
-        System.out.println(primera);
-        System.out.println(segunda);
-        System.out.println(tercera);
-        System.out.println(ahorroPrimera);
-        System.out.println(ahorroSegunda);
+        CuentaCorriente primera=new CuentaCorriente(pepe);
+        CuentaCorriente segunda=new CuentaCorriente(pepe);
+        CuentaCorriente tercera=new CuentaCorriente(pepe);
+        
+        CuentaAhorro ahorroPrimera= new CuentaAhorro(0.02, 0.001, pepe);
+        CuentaAhorro ahorroSegunda= new CuentaAhorro(0.02, 0.001, pepe);      
+        CuentaAhorro ahorroTercera= new CuentaAhorro(0.01, 0.01, 50, pepe);
+        ArrayList<Cuenta> listadoCuentas= new ArrayList<>();
+        listadoCuentas.add(primera);
+        listadoCuentas.add(segunda);
+        listadoCuentas.add(tercera);
+        listadoCuentas.add(ahorroPrimera);
+        listadoCuentas.add(ahorroSegunda);
+        listadoCuentas.add(ahorroTercera);
+        
+        
         primera.ingresar(15000);
         primera.setSaldoMin(500);
+        for(Cuenta cuenta: listadoCuentas){
+            System.out.println(cuenta);
+        }
+        
+        
+        
+        for(Cuenta cuenta: listadoCuentas){
+            cuenta.actualizarSaldo();
+            if(cuenta instanceof CuentaAhorro){
+                ((CuentaAhorro) cuenta).quitarComision();
+            }
+        }
+                
+        
+
+       
+        
         primera.retirar(150);
         System.out.println(primera);
         primera.actualizarSaldo();
@@ -46,18 +69,5 @@ public class Mainej12 {
   
 
         
-    }
-       public static String obtenerNumeroCuenta(HashSet listadoCuentas) {
-        Random r = new Random();
-        String numeroTexto = "";
-        
-        
-        do{
-        numeroTexto=numeroTexto.concat("ES");
-        for (int i = 0; i < 18; i++) {
-           numeroTexto = numeroTexto.concat(String.valueOf((char) r.nextInt(48, 58)));
-                   }
-        }while(listadoCuentas.contains(numeroTexto));
-        return numeroTexto;
     }
 }

@@ -12,10 +12,16 @@ import java.util.Random;
  */
 public class Dado extends Azar{
 
+    public Dado(int posibilidades) {
+        super(posibilidades);
+    }
+
+    
+    
     @Override
     public int lanzar() {
         Random r = new Random();
-     return r.nextInt(7);
+     return r.nextInt(posibilidades+1);
     }
     
 }

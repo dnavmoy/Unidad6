@@ -9,25 +9,29 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
+
 /**
  *
  * @author daniel
  */
 public abstract class Cuenta {
 
+   
+
     private String numeroCuenta;
     private double saldo;
     private Persona cliente;
+    private static Set<String> listaNumerosCuenta=new HashSet<>();
 
-    public Cuenta(String numeroCuenta, double saldo, Persona cliente) {
-        this.numeroCuenta = numeroCuenta;
+    public Cuenta(double saldo, Persona cliente) {
+        this.numeroCuenta = obtenerNumeroCuenta();
         this.saldo = saldo;
         this.cliente = cliente;
     }
 
-    public Cuenta(Persona cliente,String numeroCuenta) {
+    public Cuenta(Persona cliente) {
 
-        this.numeroCuenta = numeroCuenta;
+        this.numeroCuenta = obtenerNumeroCuenta();
         this.saldo = 0;
         this.cliente = cliente;
     }
@@ -104,5 +108,19 @@ public abstract class Cuenta {
     public abstract void retirar(double cantidad);
     
     public abstract void ingresar(double cantidad);
+    
+     public static String obtenerNumeroCuenta() {
+        Random r = new Random();
+                       
+        String numeroTexto = "";
+        do {
+            numeroTexto = numeroTexto.concat("ES");
+            for (int i = 0; i < 18; i++) {
+                numeroTexto = numeroTexto.concat(String.valueOf((char) r.nextInt(48, 58)));
+            }
+        } while (listaNumerosCuenta.contains(numeroTexto));
+        listaNumerosCuenta.add(numeroTexto);
+        return numeroTexto;
+    }
 
 }
