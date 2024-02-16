@@ -6,18 +6,18 @@ package Ej11;
 
 /**
  *
- * @author daniel
+ * @author Dan_n
  */
-public class Rectangulo extends Figura{
-
-    public Rectangulo(double base, double altura) {
+public class Romboide extends Figura {
+    
+    public Romboide (double base, double altura) {
         super(base, altura);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Rectangulo{");
+        sb.append("Romboide{");
         sb.append("base ").append(this.getBase());
         sb.append("altura ").append(this.getAltura());
         sb.append('}');
@@ -27,14 +27,8 @@ public class Rectangulo extends Figura{
     @Override
     public double calcularArea() {
         double area=0;
-        return area=this.getBase()*this.getAltura();
+        return area=(this.getBase()*this.getAltura());
         
     }
-
-    
-    
-    
-    
-    
     
 }

@@ -8,7 +8,7 @@ package Ej11;
  *
  * @author daniel
  */
-public class Figura {
+public abstract class Figura {
     
     private double base;
     private double altura;
@@ -19,7 +19,7 @@ public class Figura {
     }
 
     
-    
+    public abstract double calcularArea();
     
     public double getBase() {
         return base;
