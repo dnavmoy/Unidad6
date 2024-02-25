@@ -27,7 +27,7 @@ public class Rectangulo extends Figura{
     @Override
     public double calcularArea() {
         double area=0;
-        return area=this.getBase()*this.getAltura();
+       return area=this.getBase()*this.getAltura();
         
     }
 
