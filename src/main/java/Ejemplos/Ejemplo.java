@@ -56,4 +56,22 @@ public class Ejemplo {
         
         // añade ejemplo con arraylist set y maps!!
         
+        
+        
+        
+        //implmementa el comparador por defecto en la clase -> 
+        
+        implements Comparable<Libro>
+        
+        
+         @Override
+    public int compareTo(Libro o) {
+        return this.getISBN().compareTo(o.getISBN());
+        
+        //se puede usar directamente: (un array de libros: listaLibros)
+        Collections.sort(listaLibros);
+    }
+    
+    
+        
 }
