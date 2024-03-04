@@ -13,10 +13,11 @@ import java.util.Objects;
  */
 public class ClasePila {
 
-    private final int tamMaximo = 5;
-    private ArrayList<String> Pila;
+    private final int tamMaximo;
+    private final ArrayList<String> Pila;
 
-    public ClasePila() {
+    public ClasePila(int tamMaximo) {
+        this.tamMaximo=tamMaximo;
         this.Pila = new ArrayList<>(tamMaximo);
     }
 
@@ -24,9 +25,6 @@ public class ClasePila {
         return Pila;
     }
 
-    public void setPila(ArrayList<String> Pila) {
-        this.Pila = Pila;
-    }
 
     @Override
     public int hashCode() {

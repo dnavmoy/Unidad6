@@ -25,7 +25,7 @@ public class Main {
    
     public static void main(String[] args) {
         
-        ClasePila pila = new ClasePila();
+        ClasePila pila = new ClasePila(6);
         
         pila.add("hola");
         pila.add("hole");
